@@ -1,19 +1,20 @@
 package dto
 
+// Health Elasticsearch cluster status response
 type Health struct {
-  clusterName string `json:"cluster_name"`
-  status string `json:"status"`                                                                                                                                                                                        
-  status bool `json:"timed_out"`                                                                                                                                                                                        
-  status uint `json:"number_of_nodes"`                                                                                                                                                                                      
-  status string `json:"number_of_data_nodes": 1,                                                                                                                                                                                 
-  status string `json:"active_primary_shards": 0,                                                                                                                                                                                
-  status string `json:"active_shards": 0,                                                                                                                                                                                        
-  status string `json:"relocating_shards": 0,                                                                                                                                                                                    
-  status string `json:"initializing_shards": 0,                                                                                                                                                                                  
-  status string `json:"unassigned_shards": 0,                                                                                                                                                                                    
-  status string `json:"delayed_unassigned_shards": 0,                                                                                                                                                                            
-  status string `json:"number_of_pending_tasks": 0,                                                                                                                                                                              
-  status string `json:"number_of_in_flight_fetch": 0,                                                                                                                                                                            
-  status string `json:"task_max_waiting_in_queue_millis": 0,                                                                                                                                                                     
-  status string `json:"active_shards_percent_as_number": 100 
+	ClusterName             string `json:"cluster_name"`
+	Status                  string `json:"status"`
+	TimeOut                 bool   `json:"timed_out"`
+	Nodes                   uint   `json:"number_of_nodes"`
+	DataNodes               uint   `json:"number_of_data_nodes"`
+	ActivePrimaryShards     uint   `json:"active_primary_shards"`
+	ActiveShards            uint   `json:"active_shards"`
+	RelocatingShards        uint   `json:"relocating_shards"`
+	IntializingShards       uint   `json:"initializing_shards"`
+	UnassignedShards        uint   `json:"unassigned_shards"`
+	DelayedUnassignedShards uint   `json:"delayed_unassigned_shards"`
+	PendigTasks             uint   `json:"number_of_pending_tasks"`
+	InFlightFetch           uint   `json:"number_of_in_flight_fetch"`
+	Tmwiqm                  uint   `json:"task_max_waiting_in_queue_millis"`
+	Aspan                   uint   `json:"active_shards_percent_as_number"`
 }

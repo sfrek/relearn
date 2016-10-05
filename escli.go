@@ -5,16 +5,20 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+
+	"github.com/sfrek/relearn/dto"
 )
 
 type server struct {
 	host, port string
 }
 
-type health struct {
-	clusterName string `json:"cluster_name"`
-	status      string `json:"status"`
-	keys        []string
+type Mini struct {
+	ClusterName string `json:"cluster_name"`
+	Status      string `json:"status"`
+	TimeOut     bool   `json:"timed_out"`
+	Nodes       uint   `json:"number_of_nodes"`
+	DataNodes   uint   `json:"number_of_data_nodes"`
 }
 
 func (s *server) health() {
@@ -26,12 +30,12 @@ func (s *server) health() {
 	defer resp.Body.Close()
 	body, _ := ioutil.ReadAll(resp.Body)
 	fmt.Printf("%s\n", body)
-	var h health
-	var d [][]byte
+	var h dto.Health
 	fmt.Println(json.Unmarshal(body, &h))
 	fmt.Println(h)
-	fmt.Println(json.Unmarshal(body, &d))
-	fmt.Println(d)
+	var m Mini
+	json.Unmarshal(body, &m)
+	fmt.Println(m)
 }
 
 func main() {
