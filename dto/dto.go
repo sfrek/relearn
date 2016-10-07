@@ -18,3 +18,7 @@ type Health struct {
 	Tmwiqm                  uint   `json:"task_max_waiting_in_queue_millis"`
 	Aspan                   uint   `json:"active_shards_percent_as_number"`
 }
+
+type Index struct {
+	Name, State string
+}

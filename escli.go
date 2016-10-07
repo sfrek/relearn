@@ -38,7 +38,19 @@ func (s *server) health() {
 	fmt.Println(m)
 }
 
+func (s *server) indexes() {
+	url := "http://" + s.host + ":" + s.port + "/_cat/indices"
+	resp, err := http.Get(url)
+	if err != nil {
+		fmt.Println(err)
+	}
+	defer resp.Body.Close()
+	body, _ := ioutil.ReadAll(resp.Body)
+	fmt.Printf("%s", body)
+}
+
 func main() {
-	s := server{host: "localhost", port: "32769"}
+	s := server{host: "hulk", port: "9200"}
 	s.health()
+	s.indexes()
 }
